@@ -7,17 +7,17 @@ phases:
   pre_build:
     commands:
       - echo Logging in to Amazon ECR...
-      - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 381492299588.dkr.ecr.us-east-1.amazonaws.com
+      - aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 779846812158.dkr.ecr.ap-south-1.amazonaws.com
   build:
     commands:
       - echo Building the Docker image...
-      - docker build -t aws-ecs-ecs-repo .
+      - docker build -t nodeapp .
   post_build:
     commands:
       - echo Tagging the Docker image...
-      - docker tag aws-ecs-ecs-repo:latest 381492299588.dkr.ecr.us-east-1.amazonaws.com/aws-ecs-ecs-repo:latest
+      - docker tag nodeapp:latest 779846812158.dkr.ecr.ap-south-1.amazonaws.com/nodeapp:latest
       - echo Pushing the Docker image to ECR...
-      - docker push 381492299588.dkr.ecr.us-east-1.amazonaws.com/aws-ecs-ecs-repo:latest
+      - docker push 779846812158.dkr.ecr.ap-south-1.amazonaws.com/nodeapp:latest
 
 artifacts:
   files:
